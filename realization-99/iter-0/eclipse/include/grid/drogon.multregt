@@ -1,0 +1,45 @@
+-- ----------------------------------------
+-- Set-up based on multnum for each region and zone (21 multnums)
+-- ----------------------------------------
+MULTREGT
+--REGIONS    MULTIPLIER         DIRECTION
+  1   8      0.00153801  'Z'   / -- Tran mult between Valysar and Therys
+  1  15      2.15573e-06   'Z'   / -- Tran mult between Valysar and Volon
+  8  15      0.00201595    'Z'   / -- Tran mult between Therys and Volon
+--
+  2   9      1.97539e-05  'Z'   / -- Tran mult between Valysar and Therys
+  2  16      2.26461e-05   'Z'   / -- Tran mult between Valysar and Volon
+  9  16      0.493099    'Z'   / -- Tran mult between Therys and Volon
+--
+  3  10      0.00111536  'Z'   / -- Tran mult between Valysar and Therys
+  3  17      0.00605095   'Z'   / -- Tran mult between Valysar and Volon
+ 10  17      0.003465    'Z'   / -- Tran mult between Therys and Volon
+--
+  4  11      0.204719  'Z'   / -- Tran mult between Valysar and Therys
+  4  18      0.0219238   'Z'   / -- Tran mult between Valysar and Volon
+ 11  18      0.165899    'Z'   / -- Tran mult between Therys and Volon
+--
+  5  12      0.00032452  'Z'   / -- Tran mult between Valysar and Therys
+  5  19      0.307729   'Z'   / -- Tran mult between Valysar and Volon
+ 12  19      8.73449e-05    'Z'   / -- Tran mult between Therys and Volon
+--
+  6  13      0.00367428  'Z'   / -- Tran mult between Valysar and Therys
+  6  20      0.1608   'Z'   / -- Tran mult between Valysar and Volon
+ 13  20      8.24075e-05    'Z'   / -- Tran mult between Therys and Volon
+--
+  7  14      1.78528e-06  'Z'   / -- Tran mult between Valysar and Therys
+  7  21      0.000617392   'Z'   / -- Tran mult between Valysar and Volon
+ 14  21      9.89327e-06    'Z'   / -- Tran mult between Therys and Volon
+-----------
+-----------
+-----------
+-- Inter-region barrier
+-----------
+ 12  2      0.000587636  'XYZ'   / -- Tran mult between Region 5 Therys and Region 2 Valysar
+ 12  9      0.000587636  'XYZ'   / -- Tran mult between Region 5 Therys and Region 2 Therys
+ 12 16      0.000587636  'XYZ'   / -- Tran mult between Region 5 Therys and Region 2 Volon 
+ 12  6      1.98178e-05  'XYZ'   / -- Tran mult between Region 5 Therys and Region 6 Valysar
+ 12 13      1.98178e-05  'XYZ'   / -- Tran mult between Region 5 Therys and Region 6 Therys
+ 12 20      1.98178e-05  'XYZ'   / -- Tran mult between Region 5 Therys and Region 6 Volon 
+-----------
+/
