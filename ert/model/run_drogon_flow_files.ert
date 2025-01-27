@@ -1,0 +1,78 @@
+-- ==============================================================================
+--
+-- ERT CONFIGURATION FILE   ----   DROGON RESERVOIR MODEL
+--
+-- ==============================================================================
+
+
+-- This is the ERT config-file to use as an example on how to run reservoir simulation 
+-- based on the flow files that are available in the 100 realizations.
+-- Run this via:
+-- cd ert/model
+-- ert gui run_drogon_flow_files.ert
+-- (Note that flow needs to be in PATH if OPM_FLOW is to be used)
+
+-----------------------------------------------------
+-- Internal variables
+-----------------------------------------------------
+
+DEFINE <USER>              $USER
+DEFINE <SCRATCH>           .
+DEFINE <CASE_DIR>          fmu-drogon-flow-files
+DEFINE <ECLIPSE_NAME>      DROGON
+--
+
+-----------------------------------------------------
+-- Runpath folder
+-----------------------------------------------------
+
+-- Runpath folder from where all realizations are run
+RUNPATH  ../../realization-<IENS>/iter-<ITER>/
+
+
+-----------------------------------------------------
+-- Eclipse settings
+-----------------------------------------------------
+
+ECLBASE  ./eclipse/model/<ECLIPSE_NAME>-<IENS>  -- Name used for the ECLIPSE simulations in runpath
+
+-----------------------------------------------------
+-- ert storage settings
+-----------------------------------------------------
+
+ENSPATH          ../output/<CASE_DIR>/storage       -- Storage of internal ert data
+UPDATE_LOG_PATH  ../output/<CASE_DIR>/update_log    -- Info of active and inactive data points
+RUNPATH_FILE     ../output/<CASE_DIR>/runpath_file  -- List of runpaths
+
+RANDOM_SEED  123456  -- ERT seed value
+
+
+-----------------------------------------------------
+-- LSF settings
+-----------------------------------------------------
+
+NUM_CPU             1
+NUM_REALIZATIONS    4            -- Set number of realizations to run
+MAX_RUNTIME         18000          -- Set the maximum allowed run time (in seconds)
+MIN_REALIZATIONS    1              -- Success criteria
+MAX_SUBMIT          1              -- How many times should the queue system retry a simulation.
+QUEUE_OPTION  LOCAL MAX_RUNNING 4  -- Choke the number of simultaneous run
+
+QUEUE_SYSTEM LOCAL                 -- Run simulations locally
+
+
+-------------------------------------------------------
+--Install custom jobs and workflows
+-------------------------------------------------------
+
+INSTALL_JOB  OPM_FLOW                      ../bin/jobs/FM_OPM_FLOW
+
+-----------------------------------------------------
+-- Forward models
+-----------------------------------------------------
+
+-- FORWARD_MODEL INSERT_NOSIM
+
+-- FORWARD_MODEL ECLIPSE100(<VERSION>=2022.2)
+FORWARD_MODEL OPM_FLOW  
+
